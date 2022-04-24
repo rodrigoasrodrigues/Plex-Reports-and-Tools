@@ -2,8 +2,8 @@ from pprint import pprint
 from pymediainfo import MediaInfo
 from os import listdir
 from os.path import isfile, join
+import yaml
 
-media_path = "C:\Transcode"
 
 
 def get_media_info(path):
@@ -23,10 +23,13 @@ def get_media_info(path):
             result['codec'] = codec
     return result
 
+with open("config.yaml", "r") as f:
+    config = yaml.safe_load(f)
 
+for media_library in config['libs']:
+    media_path = media_library['path']
+    media_files = [join(media_path, f) for f in listdir(media_path) if f.endswith(('.mp4','.mkv','.avi','.m4v','mpeg','mpg')) and isfile(join(media_path, f))]
 
-media_files = [join(media_path, f) for f in listdir(media_path) if f.endswith(('.mp4','.mkv','.avi','.m4v','mpeg','mpg')) and isfile(join(media_path, f))]
-
-for video in media_files:
-    mi = get_media_info(video)
-    print(mi)
+    for video in media_files:
+        mi = get_media_info(video)
+        print(mi)

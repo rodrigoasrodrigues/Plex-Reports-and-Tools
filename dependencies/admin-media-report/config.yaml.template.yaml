@@ -1,0 +1,6 @@
+libs:
+  - movies:
+    path: /media/movies
+  - anime:
+    path: /media/anime
+    recursive: true
