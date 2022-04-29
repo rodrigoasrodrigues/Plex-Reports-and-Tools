@@ -12,3 +12,10 @@ video_extensions:
   - '.mpeg'
   - '.mpg'
   - '.mov'
+mailgun:
+  domain: 'DOMAIN'
+  apikey: 'KEY'
+  from: 'FROM@DOMAIN'
+  from_name: 'Automatic Media Report'
+  subject: 'Automatic Media Report'
+  to: ['YOUREMAIL']

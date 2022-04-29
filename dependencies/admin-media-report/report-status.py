@@ -2,6 +2,7 @@ from pprint import pprint
 from pymediainfo import MediaInfo
 from os import listdir
 from os.path import isfile, join
+from email_utils import *
 import yaml
 import pandas as pd
 
@@ -58,13 +59,6 @@ def calculate_library_metrics(df, libname):
     # resolution_metrics = df.groupby(['resolution']).size()
     return metrics
 
-def apply_template(dic_library, template_file):
-    with open(template_file, "r") as f:
-        template = f.read()
-        for k,v in dic_library.items():
-            template = template.replace(f'{{{{{k}}}}}',str(v))
-        return template
-
 def apply_library_template(dic_library):
     return apply_template(dic_library, library_template)
 
@@ -103,4 +97,4 @@ report_elements['library-report'] = libraries_mail
 report_mail = apply_admin_template(report_elements)
 
 print(report_mail)
-
+send_admin_report(report_mail, config)
