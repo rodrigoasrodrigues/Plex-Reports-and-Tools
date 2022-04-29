@@ -1,0 +1,7 @@
+-------------------------
+{{libname}}
+| Total Videos: {{total}}
+| codec H264: {{H264}} ({{H264_PERCENT}}%)
+| codec H265:{{H265}} ({{H265_PERCENT}}%)
+| extension MP4: {{MP4}} ({{MP4_PERCENT}}%)
+| extension MKV: {{MKV}} ({{MKV_PERCENT}}%)

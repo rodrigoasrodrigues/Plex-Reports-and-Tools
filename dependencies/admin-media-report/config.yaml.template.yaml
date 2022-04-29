@@ -1,6 +1,14 @@
 libs:
-  - movies:
+  - name: movies
     path: /media/movies
-  - anime:
+  - name: anime
     path: /media/anime
     recursive: true
+video_extensions:
+  - '.mp4'
+  - '.mkv'
+  - '.avi'
+  - '.m4v'
+  - '.mpeg'
+  - '.mpg'
+  - '.mov'
