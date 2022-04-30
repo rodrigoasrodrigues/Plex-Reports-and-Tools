@@ -3,6 +3,9 @@ from pymediainfo import MediaInfo
 from os import listdir
 from os.path import isfile, join
 from email_utils import *
+from datetime import date, timedelta
+import time
+
 import yaml
 import pandas as pd
 
@@ -71,6 +74,8 @@ def build_library_email(list_info, lib_name):
     mail = apply_library_template(lib_metrics)
     return mail
 
+start = time.time()
+
 with open("config.yaml", "r") as f:
     config = yaml.safe_load(f)
 
@@ -89,12 +94,15 @@ for media_library in config['libs']:
     all_media.extend(all_library_media)
 
 #now do the same for the entire media collection
-libraries_mail += build_library_email(all_media, 'All')
+libraries_mail = build_library_email(all_media, 'All') + libraries_mail
 
 report_elements = {}
 report_elements['library-report'] = libraries_mail
-
+report_elements['date'] = date.today()
+end = time.time()
+execution_time = end - start
+report_elements['execute-time'] = str(timedelta(seconds=execution_time))
 report_mail = apply_admin_template(report_elements)
 
-print(report_mail)
+# print(report_mail)
 send_admin_report(report_mail, config)

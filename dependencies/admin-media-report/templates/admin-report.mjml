@@ -1,2 +1,21 @@
-Admin Report
-{{library-report}}
+<mjml>
+    <mj-head>
+        <mj-attributes>
+            <mj-class name="preheader" color="#000000" font-size="11px" font-family="Ubuntu, Helvetica, Arial, sans-serif" padding="0px"></mj-class>
+        </mj-attributes>
+    </mj-head>
+    <mj-body background-color="#e0f2ff">
+        <mj-section background-color="#2a5cab" padding="10px 0">
+            <mj-column>
+                <mj-text align="center" color="#ffffff" font-size="20px" font-family="Lato, Helvetica, Arial, sans-serif" padding="18px 0px">Media Library Admin Report</mj-text>
+                <mj-text align="center" color="#ffffff" font-size="16px" font-family="Lato, Helvetica, Arial, sans-serif" padding="0">{{date}}</mj-text>
+            </mj-column>
+        </mj-section>
+        {{library-report}}
+        <mj-section background-color="#2a5cab" padding="10px">
+            <mj-column >
+                <mj-text align="center" color="#EC652D" font-size="20px" font-family="Lato, Helvetica, Arial, sans-serif" padding="10px 25px">execution time: {{execute-time}}</mj-text>
+            </mj-column>
+        </mj-section>
+    </mj-body>
+</mjml>

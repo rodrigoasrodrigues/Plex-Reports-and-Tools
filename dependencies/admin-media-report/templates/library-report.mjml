@@ -1,7 +1,37 @@
--------------------------
-{{libname}}
-| Total Videos: {{total}}
-| codec H264: {{H264}} ({{H264_PERCENT}}%)
-| codec H265:{{H265}} ({{H265_PERCENT}}%)
-| extension MP4: {{MP4}} ({{MP4_PERCENT}}%)
-| extension MKV: {{MKV}} ({{MKV_PERCENT}}%)
+<mj-section background-color="#ffffff" padding-top="20px">
+            <mj-column width="100%" >
+                
+                <mj-text align="center" color="#2a5cab" font-size="20px" font-family="Lato, Helvetica, Arial, sans-serif" padding="10px 25px"><strong>{{libname}}                    </strong>
+                </mj-text>
+                <mj-text align="center" color="#2a5cab" font-size="15px" font-family="Lato, Helvetica, Arial, sans-serif" padding="10px 25px">
+                    Total Videos: {{total}}    
+                    </mj-text>
+                <mj-table align="center" width="90%" padding-bottom="20px">
+                    <tr style="border-bottom:1px solid #ecedee;text-align:left;padding:15px 0;">
+                        <th style="padding: 0 15px 0 0;">Metric</th>
+                        <th style="padding: 0 15px;">Count</th>
+                        <th style="padding: 0 0 0 15px;">Percentage</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0 15px 0 0;">codec H264</td>
+                        <td style="padding: 0 15px;">{{H264}}</td>
+                        <td style="padding: 0 0 0 15px;">{{H264_PERCENT}}%</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0 15px 0 0;">codec H265</td>
+                        <td style="padding: 0 15px;">{{H265}}</td>
+                        <td style="padding: 0 0 0 15px;">{{H265_PERCENT}}%</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0 15px 0 0;">extension MP4</td>
+                        <td style="padding: 0 15px;">{{MP4}}</td>
+                        <td style="padding: 0 0 0 15px;">{{MP4_PERCENT}}%</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0 15px 0 0;">extension MKV</td>
+                        <td style="padding: 0 15px;">{{MKV}}</td>
+                        <td style="padding: 0 0 0 15px;">{{MKV_PERCENT}}%</td>
+                    </tr>
+                </mj-table>
+            </mj-column>
+        </mj-section>
