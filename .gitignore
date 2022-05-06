@@ -128,5 +128,8 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-#ignore config files for privacy
+# ignore config files for privacy
 config.yaml
+
+# ignore reports
+*.csv

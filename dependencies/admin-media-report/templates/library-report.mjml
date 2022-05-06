@@ -12,26 +12,13 @@
                         <th style="padding: 0 15px;">Count</th>
                         <th style="padding: 0 0 0 15px;">Percentage</th>
                     </tr>
+                    {{begin.grouploop}}
                     <tr>
-                        <td style="padding: 0 15px 0 0;">codec H264</td>
-                        <td style="padding: 0 15px;">{{H264}}</td>
-                        <td style="padding: 0 0 0 15px;">{{H264_PERCENT}}%</td>
+                        <td style="padding: 0 15px 0 0;">{{metric_key}}</td>
+                        <td style="padding: 0 15px;">{{metric_val}}</td>
+                        <td style="padding: 0 0 0 15px;">{{metric_percent}}</td>
                     </tr>
-                    <tr>
-                        <td style="padding: 0 15px 0 0;">codec H265</td>
-                        <td style="padding: 0 15px;">{{H265}}</td>
-                        <td style="padding: 0 0 0 15px;">{{H265_PERCENT}}%</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 0 15px 0 0;">extension MP4</td>
-                        <td style="padding: 0 15px;">{{MP4}}</td>
-                        <td style="padding: 0 0 0 15px;">{{MP4_PERCENT}}%</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 0 15px 0 0;">extension MKV</td>
-                        <td style="padding: 0 15px;">{{MKV}}</td>
-                        <td style="padding: 0 0 0 15px;">{{MKV_PERCENT}}%</td>
-                    </tr>
+                    {{end.grouploop}}
                 </mj-table>
             </mj-column>
         </mj-section>
