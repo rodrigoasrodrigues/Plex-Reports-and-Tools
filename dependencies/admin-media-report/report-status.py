@@ -25,29 +25,33 @@ def get_resolution(width):
         return "UHD"
 
 def get_media_info(path, libname):
-    media_info = MediaInfo.parse(path)
-    result = {}
-    result['path'] = path
-    result['libname'] = libname
-    for track in media_info.tracks:
-        if track.track_type == 'General':
-            result['extension'] = track.file_extension
-            result['name'] = track.file_name
-            result['duration'] = track.duration
-            result['readable_duration'] = track.other_duration[0]
-            result['file_size'] = track.file_size
-            result['readable_file_size'] = track.other_file_size[0]
-        elif track.track_type == 'Video':
-            # print(track.to_data())
-            codec = track.internet_media_type
-            if codec is None:
-                codec = track.commercial_name
-            elif '/' in codec:
-                codec = codec.split('/')[-1]
-            result['codec'] = codec
-            result['resolution'] = get_resolution(track.width)
-    result['size_duration_ratio'] = result['file_size'] / result['duration']
-    return result
+    try:
+        media_info = MediaInfo.parse(path)
+        result = {}
+        result['path'] = path
+        result['libname'] = libname
+        for track in media_info.tracks:
+            if track.track_type == 'General':
+                result['extension'] = track.file_extension
+                result['name'] = track.file_name
+                result['duration'] = track.duration
+                result['readable_duration'] = track.other_duration[0]
+                result['file_size'] = track.file_size
+                result['readable_file_size'] = track.other_file_size[0]
+            elif track.track_type == 'Video':
+                # print(track.to_data())
+                codec = track.internet_media_type
+                if codec is None:
+                    codec = track.commercial_name
+                elif '/' in codec:
+                    codec = codec.split('/')[-1]
+                result['codec'] = codec
+                result['resolution'] = get_resolution(track.width)
+        result['size_duration_ratio'] = result['file_size'] / result['duration']
+        return result
+    except:
+        print(f'Failed to get info: {path}')
+        return None
 
 def calculate_group_metrics(df, group):
     total = len(df)
@@ -110,8 +114,8 @@ for media_library in config['libs']:
     if 'recursive' in media_library:
         recursive = media_library['recursive']
     media_files = get_file_list(media_path, recursive)
-
-    all_library_media = [get_media_info(video, library_name) for video in media_files]
+    all_library_media = [x for x in
+        (get_media_info(video, library_name) for video in media_files) if x]
     mail = build_library_email(all_library_media, library_name)
     libraries_mail += mail
     all_media.extend(all_library_media)
