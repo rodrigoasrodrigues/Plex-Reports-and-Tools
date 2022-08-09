@@ -10,8 +10,9 @@ import time
 import yaml
 import pandas as pd
 
-library_template = 'templates/library-report.mjml'
-admin_template = 'templates/admin-report.mjml'
+base_dir = '/root/airflow/dependencies/admin-media-report'
+library_template = f'{base_dir}/templates/library-report.mjml'
+admin_template = f'{base_dir}/templates/admin-report.mjml'
 
 
 def get_resolution(width):
@@ -100,7 +101,7 @@ def get_file_list(path, recursive=False):
 
 start = time.time()
 
-with open("config.yaml", "r") as f:
+with open(f'{base_dir}/config.yaml', 'r') as f:
     config = yaml.safe_load(f)
     media_endings = tuple(config['video_extensions'])
 
