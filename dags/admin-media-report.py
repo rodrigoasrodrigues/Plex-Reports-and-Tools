@@ -27,7 +27,7 @@ with DAG(
     # t1, t2 and t3 are examples of tasks created by instantiating operators
     report_status = BashOperator(
         task_id='report_status',
-        bash_command='python3 ~/airflow/dependencies/admin-media-report/report-staus.py',
+        bash_command='python3 ~/airflow/dependencies/admin-media-report/report-status.py',
     )
     report_status.doc_md = dedent('''
         # Admin status report e-mail
