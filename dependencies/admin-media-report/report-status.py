@@ -10,9 +10,8 @@ import time
 import yaml
 import pandas as pd
 
-base_dir = '/root/airflow/dependencies/admin-media-report'
-library_template = f'{base_dir}/templates/library-report.mjml'
-admin_template = f'{base_dir}/templates/admin-report.mjml'
+library_template = './templates/library-report.mjml'
+admin_template = './templates/admin-report.mjml'
 
 
 def get_resolution(width):
@@ -85,6 +84,7 @@ def apply_admin_template(dic_library):
 def build_library_email(list_info, lib_name):
     df_lib = pd.DataFrame(list_info)
     lib_metrics = calculate_library_metrics(df_lib, lib_name)
+    
     mail = apply_library_template(lib_metrics)
     return mail
 
@@ -101,7 +101,7 @@ def get_file_list(path, recursive=False):
 
 start = time.time()
 
-with open(f'{base_dir}/config.yaml', 'r') as f:
+with open('./config.yaml', 'r') as f:
     config = yaml.safe_load(f)
     media_endings = tuple(config['video_extensions'])
 

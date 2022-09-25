@@ -6,7 +6,7 @@ def apply_template(dic_library, template_file):
     with open(template_file, "r") as f:
         template = f.read()
         template = apply_grouploop(dic_library, template)
-        for k,v in dic_library.items():
+        for k, v in dic_library.items():
             template = template.replace(f'{{{{{k}}}}}',str(v))
         return template
 
